@@ -42,9 +42,19 @@ var todoList = {
 var handlers = {
   addTodo: function() {
     var addTodoTextInput = document.getElementById('addTodoTextInput');
-    todoList.addTodo(addTodoTextInput.value);
-    addTodoTextInput.value = '';
-    view.displayTodos();
+    if (addTodoTextInput.value.length > 0) {
+      todoList.addTodo(addTodoTextInput.value);
+      addTodoTextInput.value = '';
+      view.displayTodos();
+    }
+  },
+  addTodoOnKey: function() {
+    var addTodoTextInput = document.getElementById('addTodoTextInput');
+    if (addTodoTextInput.value.length > 0 && event.keyCode === 13) {
+      todoList.addTodo(addTodoTextInput.value);
+      addTodoTextInput.value = '';
+      view.displayTodos();
+    }
   },
   changeTodo: function() {
     var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
